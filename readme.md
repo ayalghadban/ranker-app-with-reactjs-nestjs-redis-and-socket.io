@@ -1,5 +1,4 @@
-//## General 
-//this app about ranker application than you can write 
+
 ## Links to Tools and Frameworks
 
 ### General
