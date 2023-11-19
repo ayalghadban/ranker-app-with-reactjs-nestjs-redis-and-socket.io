@@ -1,4 +1,4 @@
-import { Nominations, Rankings } from '../../../../shared/poll-types';
+import { Nominations, Rankings } from 'shared/poll-types';
 import getResults from '../getResults';
 
 describe('getResults', () => {

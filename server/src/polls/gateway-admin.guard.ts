@@ -1,3 +1,5 @@
+  // Guard Admin
+
 import {
   CanActivate,
   ExecutionContext,
@@ -8,7 +10,6 @@ import { JwtService } from '@nestjs/jwt';
 import { WsUnauthorizedException } from 'src/exceptions/ws-exceptions';
 import { PollsService } from './polls.service';
 import { AuthPayload, SocketWithAuth } from './types';
-
 @Injectable()
 export class GatewayAdminGuard implements CanActivate {
   private readonly logger = new Logger(GatewayAdminGuard.name);
@@ -25,6 +26,7 @@ export class GatewayAdminGuard implements CanActivate {
       socket.handshake.auth.token || socket.handshake.headers['token'];
 
     if (!token) {
+      //why do you write 2 error exceptions what is the deffirance bettween that?
       this.logger.error('No authorization token provided');
 
       throw new WsUnauthorizedException('No token provided');

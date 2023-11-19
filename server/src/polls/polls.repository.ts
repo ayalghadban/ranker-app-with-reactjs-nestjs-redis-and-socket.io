@@ -9,7 +9,7 @@ import {
   AddParticipantRankingsData,
   CreatePollData,
 } from './types';
-import { Poll, Results } from '../../../shared';
+import { Poll, Results } from 'shared';
 
 @Injectable()
 export class PollsRepository {
@@ -23,7 +23,8 @@ export class PollsRepository {
   ) {
     this.ttl = configService.get('POLL_DURATION');
   }
-
+  
+  // create new poll
   async createPoll({
     votesPerVoter,
     topic,
@@ -66,6 +67,7 @@ export class PollsRepository {
     }
   }
 
+  // Get one poll
   async getPoll(pollID: string): Promise<Poll> {
     this.logger.log(`Attempting to get poll with: ${pollID}`);
 
@@ -91,6 +93,7 @@ export class PollsRepository {
     }
   }
 
+  //add participant 
   async addParticipant({
     pollID,
     userID,
@@ -121,7 +124,7 @@ export class PollsRepository {
       );
     }
   }
-
+  // remove participant
   async removeParticipant(pollID: string, userID: string): Promise<Poll> {
     this.logger.log(`removing userID: ${userID} from poll: ${pollID}`);
 
@@ -141,6 +144,7 @@ export class PollsRepository {
     }
   }
 
+  // add new  nomination 
   async addNomination({
     pollID,
     nominationID,
@@ -173,6 +177,8 @@ export class PollsRepository {
     }
   }
 
+
+  // delete nomination 
   async removeNomination(pollID: string, nominationID: string): Promise<Poll> {
     this.logger.log(
       `removing nominationID: ${nominationID} from poll: ${pollID}`,
@@ -197,6 +203,7 @@ export class PollsRepository {
     }
   }
 
+  // start new poll 
   async startPoll(pollID: string): Promise<Poll> {
     this.logger.log(`setting hasStarted for poll: ${pollID}`);
 
@@ -219,6 +226,7 @@ export class PollsRepository {
     }
   }
 
+  // add new participant rankings
   async addParticipantRankings({
     pollID,
     userID,
@@ -252,6 +260,8 @@ export class PollsRepository {
     }
   }
 
+
+  // add result
   async addResults(pollID: string, results: Results): Promise<Poll> {
     this.logger.log(
       `Attempting to add results to pollID: ${pollID}`,
@@ -282,6 +292,7 @@ export class PollsRepository {
     }
   }
 
+  // delete poll 
   async deletePoll(pollID: string): Promise<void> {
     const key = `polls:${pollID}`;
 

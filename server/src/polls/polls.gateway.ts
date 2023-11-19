@@ -23,12 +23,12 @@ import { PollsService } from './polls.service';
 import { SocketWithAuth } from './types';
 
 @UsePipes(new ValidationPipe())
-@UseFilters(new WsCatchAllFilter())
+@UseFilters(new WsCatchAllFilter()) //question
 @WebSocketGateway({
   namespace: 'polls',
-})
+}) //ques
 export class PollsGateway
-  implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
+  implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect //ask chatjpt about there
 {
   private readonly logger = new Logger(PollsGateway.name);
   constructor(private readonly pollsService: PollsService) {}

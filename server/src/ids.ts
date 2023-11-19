@@ -1,3 +1,5 @@
+// create poll id with nanoid package 
+
 import { customAlphabet, nanoid } from 'nanoid';
 
 export const createPollID = customAlphabet(

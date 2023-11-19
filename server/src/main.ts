@@ -20,8 +20,9 @@ async function bootstrap() {
   });
   app.useWebSocketAdapter(new SocketIOAdapter(app, configService));
 
-  await app.listen(port);
+  await app.listen(port); 
 
   logger.log(`Server running on port ${port}`);
 }
-bootstrap();
+
+export default bootstrap();
